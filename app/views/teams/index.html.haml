@@ -1,11 +1,60 @@
-%table.table
+%table.table.table-hover
   %thead
     %tr
-      %th Team Name
+      %th Point Totals
       - (1..17).each do |week|
         %th= week
+      %th Total Points
+      %th Points Rank
   %tbody
-    - @teams.each do |team|
+    - teams.each do |team|
       %tr
         %td= team.name
+        %td= team.years.first.weeks[0].points.truncate(1)
+        %td= team.years.first.weeks[1].points.truncate(1)
+        %td= team.years.first.weeks[2].points.truncate(1)
+        %td= team.years.first.weeks[3].points.truncate(1)
+        %td= team.years.first.weeks[4].points.truncate(1)
+        %td= team.years.first.weeks[5].points.truncate(1)
+        %td= team.years.first.weeks[6].points.truncate(1)
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= team.years.first.overall_points.truncate(1)
 
+%table.table.table-hover
+  %thead
+    %tr
+      %th Sidebet Payouts
+      - (1..17).each do |week|
+        %th= week
+      %th Sidebet Totals
+      %th Sidebet Rank
+  %tbody
+    - teams.each do |team|
+      %tr
+        %td= team.name
+        %td= rankings(team, 0)
+        %td= rankings(team, 1)
+        %td= rankings(team, 2)
+        %td= rankings(team, 3)
+        %td= rankings(team, 4)
+        %td= rankings(team, 5)
+        %td= rankings(team, 6)
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0
+        %td= 0

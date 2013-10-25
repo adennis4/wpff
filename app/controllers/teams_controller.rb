@@ -1,6 +1,4 @@
 class TeamsController < ApplicationController
+  expose :teams
 
-  def index
-    @teams = Team.all
-  end
 end
