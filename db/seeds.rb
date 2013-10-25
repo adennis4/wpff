@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Team.create(name: 'Can I Get A Woock Woock!', owner: 'John Woock' )
+Team.create(name: 'Mean Reverters', owner: 'Rich Elliott' )
+Team.create(name: 'I spel goude ?', owner: 'Justin Bagdzius' )
+Team.create(name: 'Berry Domesticated', owner: 'Joe Rizzo' )
+Team.create(name: 'Hall of Fame', owner: 'Josh Farber' )
+Team.create(name: 'On Cam\'s Back', owner: 'Andrew Dennis' )
+Team.create(name: 'Play Me? Child Please!', owner: 'Bradley Duesing' )
+Team.create(name: 'Stern But Fair', owner: 'Eric Stern' )
+Team.create(name: 'Mean Skewers', owner: 'Michael Yonk' )
+Team.create(name: 'Beanie\'s Babies', owner: 'Cliff Payne' )
+Team.create(name: 'That\'s a HUGE Vick!', owner: 'Heath Hunter' )
+Team.create(name: 'Mike Brown Sucks Balls', owner: 'Marty Mooney' )

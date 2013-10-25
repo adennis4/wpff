@@ -1,0 +1,11 @@
+%table.table
+  %thead
+    %tr
+      %th Team Name
+      - (1..17).each do |week|
+        %th= week
+  %tbody
+    - @teams.each do |team|
+      %tr
+        %td= team.name
+
