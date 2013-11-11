@@ -3,23 +3,19 @@ class Year < ActiveRecord::Base
   belongs_to :team
 
   def update_total_points
-    self.update_attributes(overall_points: total_points.sum)
+    self.update_attributes(overall_points: total_points)
   end
 
   def total_points
-    weeks.map { |week| week.points.to_d }
+    weeks.map { |week| week.points.to_d }.sum
   end
 
-  # def total_points_rank
-  #   total_points.sort
-  # end
-
   def update_total_sidebets
-    self.update_attributes(overall_sidebets: total_sidebets.sum)
+    self.update_attributes(overall_sidebets: total_sidebets)
   end
 
   def total_sidebets
-    weeks.map { |week| week.payout }
+    weeks.map { |week| week.payout }.sum
   end
 
   # def total_sidebets_rank

@@ -4,6 +4,26 @@
   margin-right: auto
 }
 
+.center {
+  text-align: center
+}
+
+.engraver {
+  color: red;
+  margin-left: 5px
+}
+
+.ex-engraver {
+  color: pink;
+  margin-left: 25px;
+  font-style:
+}
+
+.engraver-title {
+  font-weight: bold;
+  margin-left: 15px
+}
+
 .container {
   margin-top: 15px
 }
