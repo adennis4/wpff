@@ -1,60 +1,40 @@
-%table.table.table-hover
-  %thead
-    %tr
-      %th Point Totals
-      - (1..17).each do |week|
-        %th= week
-      %th Total Points
-      %th Points Rank
-  %tbody
-    - teams.each do |team|
-      %tr
-        %td= team.name
-        %td= team.years.first.weeks[0].points.truncate(1)
-        %td= team.years.first.weeks[1].points.truncate(1)
-        %td= team.years.first.weeks[2].points.truncate(1)
-        %td= team.years.first.weeks[3].points.truncate(1)
-        %td= team.years.first.weeks[4].points.truncate(1)
-        %td= team.years.first.weeks[5].points.truncate(1)
-        %td= team.years.first.weeks[6].points.truncate(1)
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= team.years.first.overall_points.truncate(1)
+%img.title-img{src: '/assets/warrior-poets-title.png'}
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th Sidebet Payouts
-      - (1..17).each do |week|
-        %th= week
-      %th Sidebet Totals
-      %th Sidebet Rank
-  %tbody
-    - teams.each do |team|
-      %tr
-        %td= team.name
-        %td= rankings(team, 0)
-        %td= rankings(team, 1)
-        %td= rankings(team, 2)
-        %td= rankings(team, 3)
-        %td= rankings(team, 4)
-        %td= rankings(team, 5)
-        %td= rankings(team, 6)
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
-        %td= 0
+.container
+  .hero-unit
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th Point Totals
+          - (1..Week.last.week).each do |week|
+            %th= week
+          %th Total Points
+          %th Points Rank
+      %tbody
+        - teams.each do |team|
+          %tr
+            %td= team.name
+            - team.years.first.weeks.each do |week|
+              %td= week.points.truncate(1)
+            %td= team.years.first.overall_points.truncate(1)
+            %td= team.years.first.points_rank
+
+  .hero-unit
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th Sidebet Payouts
+          - (1..Week.last.week).each do |week|
+            %th= week
+          %th Sidebet Totals
+          %th Sidebet Rank
+      %tbody
+        - teams.each do |team|
+          %tr
+            %td= team.name
+            - team.years.first.weeks.each do |week|
+              %td{class: "#{indicator(week.ranking, 6)}"}
+                = dollar_conversion[week.payout]
+            %td{class: "#{indicator(team.years.first.overall_sidebets * -1, 0)}"}
+              = to_currency team.years.first.overall_sidebets
+            %td= team.years.first.sidebet_rank

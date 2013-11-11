@@ -1,24 +1,31 @@
 module TeamsHelper
 
-  def rankings(team, week)
-    ranking = team.years.first.weeks[week].ranking
-    dollar_conversion[ranking]
-  end
-
   def dollar_conversion
     {
-      1 => "$55",
-      2 => "$45",
-      3 => "$35",
-      4 => "$25",
-      5 => "$15",
-      6 => "$5",
-      7 => "($5)",
-      8 => "($15)",
-      9 => "($25)",
-      10 => "($35)",
-      11 => "($45)",
-      12 => "($55)"
+      55 => "$55",
+      45 => "$45",
+      35 => "$35",
+      25 => "$25",
+      15 => "$15",
+      5 => "$5",
+      -5 => "($5)",
+      -15 => "($15)",
+      -25 => "($25)",
+      -35 => "($35)",
+      -45 => "($45)",
+      -55 => "($55)"
     }
+  end
+
+  def to_currency(num)
+    if num < 0
+      "($#{num * -1})"
+    else
+      "$#{num}"
+    end
+  end
+
+  def indicator(ranking, threshold)
+    ranking > threshold ? "negative" : ""
   end
 end
