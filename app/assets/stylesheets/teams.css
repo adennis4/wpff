@@ -14,9 +14,9 @@
 }
 
 .ex-engraver {
-  color: pink;
+  color: #FFC1C1;
   margin-left: 25px;
-  font-style:
+  text-decoration: line-through
 }
 
 .engraver-title {
