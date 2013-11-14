@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'rails', '4.0.0.rc1'
 gem 'sass-rails', '~> 4.0.0.rc1'
 gem 'uglifier', '>= 1.3.0'
+gem 'pg'
 
 group :doc do
   gem 'sdoc', require: false
@@ -15,9 +16,4 @@ end
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
 end
