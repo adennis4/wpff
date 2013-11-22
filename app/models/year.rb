@@ -18,14 +18,22 @@ class Year < ActiveRecord::Base
     weeks.map { |week| week.payout }.sum
   end
 
-  # def total_sidebets_rank
-  #   total_sidebets.sort
-  # end
+  def total_sidebets_rank(year)
+    years = Year.where year: year
+    order = years.sort { |a,b| a.overall_sidebets <=> b.overall_sidebets }
+    rank = (1..12).to_a.reverse
+    order.each do |position|
+      position.update_attributes(sidebet_rank: rank.shift)
+    end
+  end
 
-  # def calculate_sidebet_totals
-  #   total = weeks.map do |week|
-  #     week.points.to_d
-  #   end.sum
-  #   self.update_attributes(overall_points: total)
-  # end
+  def total_points_rank(year)
+    years = Year.where year: year
+    order = years.sort { |a,b| a.overall_points <=> b.overall_points }
+    rank = (1..12).to_a.reverse
+    order.each do |position|
+      position.update_attributes(points_rank: rank.shift)
+    end
+
+  end
 end
