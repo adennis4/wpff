@@ -3,6 +3,7 @@ class Week < ActiveRecord::Base
 
   def self.create_week(year="2013", week, points, payouts, ranks)
     years = Year.where year: year
+    years.sort! { |a,b| a.team_id <=> b.team_id }
     years.each do |year|
       Week.create(
         week: week,
