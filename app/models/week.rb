@@ -9,7 +9,7 @@ class Week < ActiveRecord::Base
         year_id: year.id,
         points: points.shift,
         payout: payouts.shift,
-        ranking: rank.shift
+        ranking: ranks.shift
       )
     end
   end
