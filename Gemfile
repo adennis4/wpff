@@ -6,8 +6,9 @@ gem 'haml-rails'
 gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-rails'
 gem 'pg'
-gem 'rails', '4.0.0.rc1'
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'rails'
+gem 'rails-backbone'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :doc do
