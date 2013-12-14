@@ -45,7 +45,7 @@
             %td= team.name
             - team.years.first.weeks.each do |week|
               %td{class: "#{indicator(week.ranking, 6)}"}
-                = dollar_conversion[week.payout]
+                = to_currency(week.payout)
             %td.center{class: "#{indicator(team.years.first.overall_sidebets * -1, 0)}"}
               = to_currency team.years.first.overall_sidebets
             %td.center= team.years.first.sidebet_rank
