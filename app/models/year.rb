@@ -18,7 +18,7 @@ class Year < ActiveRecord::Base
     weeks.map { |week| week.payout }.sum
   end
 
-  def total_sidebets_rank(year)
+  def self.total_sidebets_rank(year)
     years = Year.where year: year
     order = years.sort { |a,b| a.overall_sidebets <=> b.overall_sidebets }
     rank = (1..12).to_a.reverse
@@ -27,7 +27,7 @@ class Year < ActiveRecord::Base
     end
   end
 
-  def total_points_rank(year)
+  def self.total_points_rank(year)
     years = Year.where year: year
     order = years.sort { |a,b| a.overall_points <=> b.overall_points }
     rank = (1..12).to_a.reverse
