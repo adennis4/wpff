@@ -34,6 +34,9 @@ class Year < ActiveRecord::Base
     order.each do |position|
       position.update_attributes(points_rank: rank.shift)
     end
+  end
 
+  def sort_weeks
+    weeks.sort_by { |week| week.week }
   end
 end

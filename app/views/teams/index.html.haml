@@ -43,7 +43,7 @@
         - teams.each do |team|
           %tr
             %td= team.name
-            - team.years.first.weeks.each do |week|
+            - team.years.first.sort_weeks.each do |week|
               %td{class: "#{indicator(week.ranking, 6)}"}
                 = to_currency(week.payout)
             %td.center{class: "#{indicator(team.years.first.overall_sidebets * -1, 0)}"}
