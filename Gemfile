@@ -11,10 +11,6 @@ gem 'rails-backbone'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 
-group :doc do
-  gem 'sdoc', require: false
-end
-
 group :development, :test do
   gem 'pry-rails'
 end
