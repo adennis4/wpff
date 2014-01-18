@@ -1,11 +1,7 @@
 :javascript
-  App.init = #{teams.to_json};
-
-%script#teams_tmpl(type="text/x-handlebars")
-  %ul
-    {{#teams}}
-    %li {{name}} - {{id}}
-    {{/teams}}
+  $(function() {
+    Teams.init(#{teams_init_json});
+    });
 
 %img.title-img{src: '/images/warrior-poets-title.png'}
 
@@ -19,6 +15,31 @@
   %br
   That's a HUGE Vick! - 69.4 pts
 
+%script#teams_tmpl(type="text/x-handlebars-template")
+  .container
+    .hero-unit
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th Point Totals
+            - (1..Week.last.week).each do |week|
+              %th= week
+            %th.center Total Points
+            %th.center Points Rank
+        %tbody
+          {{#teams}}
+          %tr
+            %td {{name}}
+            {{#weeeks}}
+            %td 5
+            {{/weeeks}}
+          {{/teams}}
+
+
+-# - team.years.first.weeks.each do |week|
+-#   %td= week.points.truncate(1)
+-# %td.center= team.years.first.overall_points.truncate(1)
+-# %td.center= team.years.first.points_rank
 
 .container
   .hero-unit
