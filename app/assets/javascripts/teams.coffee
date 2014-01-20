@@ -9,12 +9,9 @@ Teams.init = (options)->
 class TeamsView extends Backbone.View
   initialize: (options)->
     @data = options.data
-    teamRow = new TeamRowView options.data.teams[0]
-    teamRow.render()
 
   viewContext: ->
-    teams: @data.teams
-    years: @data.years
+    teams: @data
 
   template: ->
     Handlebars.compile($("#teams_tmpl").html()) @viewContext()

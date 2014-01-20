@@ -8,6 +8,11 @@
   text-align: center
 }
 
+.center-negative{
+  text-align: center;
+  color: red
+}
+
 .engraver {
   color: red;
   margin-left: 5px

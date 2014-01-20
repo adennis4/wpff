@@ -1,5 +1,6 @@
 class Week < ActiveRecord::Base
   belongs_to :year
+  has_one :teams, through: :year
 
   def self.create_week(year="2013", week, points, payouts, ranks)
     years = Year.where year: year

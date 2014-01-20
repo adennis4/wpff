@@ -30,52 +30,33 @@
           {{#teams}}
           %tr
             %td {{name}}
-            {{#weeeks}}
-            %td 5
-            {{/weeeks}}
+            {{#week}}
+            %td {{points}}
+            {{/week}}
+            {{#year}}
+            %td.center {{overall_points}}
+            %td.center {{points_rank}}
+            {{/year}}
           {{/teams}}
 
-
--# - team.years.first.weeks.each do |week|
--#   %td= week.points.truncate(1)
--# %td.center= team.years.first.overall_points.truncate(1)
--# %td.center= team.years.first.points_rank
-
-.container
-  .hero-unit
-    %table.table.table-striped.table-hover
-      %thead
-        %tr
-          %th Point Totals
-          - (1..Week.last.week).each do |week|
-            %th= week
-          %th.center Total Points
-          %th.center Points Rank
-      %tbody
-        - teams.each do |team|
+    .hero-unit
+      %table.table.table-striped.table-hover
+        %thead
           %tr
-            %td= team.name
-            - team.years.first.weeks.each do |week|
-              %td= week.points.truncate(1)
-            %td.center= team.years.first.overall_points.truncate(1)
-            %td.center= team.years.first.points_rank
-
-  .hero-unit
-    %table.table.table-striped.table-hover
-      %thead
-        %tr
-          %th Sidebet Payouts
-          - (1..Week.last.week).each do |week|
-            %th= week
-          %th.center Sidebet Totals
-          %th.center Sidebet Rank
-      %tbody
-        - teams.each do |team|
+            %th Point Totals
+            - (1..Week.last.week).each do |week|
+              %th= week
+            %th.center Total Points
+            %th.center Points Rank
+        %tbody
+          {{#teams}}
           %tr
-            %td= team.name
-            - team.years.first.sort_weeks.each do |week|
-              %td{class: "#{indicator(week.ranking, 6)}"}
-                = to_currency(week.payout)
-            %td.center{class: "#{indicator(team.years.first.overall_sidebets * -1, 0)}"}
-              = to_currency team.years.first.overall_sidebets
-            %td.center= team.years.first.sidebet_rank
+            %td {{name}}
+            {{#week}}
+            {{visualPayout ranking payout}}
+            {{/week}}
+            {{#year}}
+            {{visualTotalPayout sidebet_rank overall_sidebets}}
+            %td.center {{sidebet_rank}}
+            {{/year}}
+          {{/teams}}

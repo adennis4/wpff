@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108002253) do
+ActiveRecord::Schema.define(version: 20140119010639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20131108002253) do
   create_table "weeks", force: true do |t|
     t.integer  "week"
     t.integer  "ranking"
-    t.decimal  "points"
+    t.decimal  "points",     precision: 5, scale: 1
     t.integer  "year_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131108002253) do
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "overall_points"
+    t.decimal  "overall_points",   precision: 5, scale: 1
     t.integer  "overall_sidebets"
     t.integer  "points_rank"
     t.integer  "sidebet_rank"
