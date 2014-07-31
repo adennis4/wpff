@@ -1,13 +1,11 @@
-Handlebars.registerHelper 'visualPayout', (ranking, payout)->
-  indicator = if ranking > 6 then "negative" else ""
-  dollars = if payout > 0 then payout else "($" + (payout * -1) + ")"
-  new Handlebars.SafeString(
-    "<td class=" + indicator + ">" + dollars + "</td>"
-  )
+Handlebars.registerHelper 'visualPayout', (payout)->
+  if payout > 0
+    new Handlebars.SafeString( "<td>" + payout + "</td>")
+  else
+    new Handlebars.SafeString( "<td class=negative>($" + payout * -1 + ")</td>")
 
-Handlebars.registerHelper 'visualTotalPayout', (ranking, payout)->
-  indicator = if ranking > 6 then "center-negative" else "center"
-  dollars = if payout > 0 then payout else "($" + (payout * -1) + ")"
-  new Handlebars.SafeString(
-    "<td class=" + indicator + ">" + dollars + "</td>"
-  )
+Handlebars.registerHelper 'visualTotalPayout', (payout)->
+  if payout > 0
+    new Handlebars.SafeString( "<td class=center>" + payout + "</td>")
+  else
+    new Handlebars.SafeString( "<td class=center-negative>($" + payout * -1 + ")</td>")
